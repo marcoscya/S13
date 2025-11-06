@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Predictivo YouTube 2025</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body { background: #f0f2f5; color: #1c1e21; line-height: 1.6; }
+    .container { max-width: 1200px; margin: 20px auto; padding: 0 15px; }
+    
+    header { background: linear-gradient(135deg, #ff0000, #cc0000); color: white; padding: 25px; border-radius: 12px; text-align: center; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(255,0,0,0.2); }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p { font-size: 1.1rem; opacity: 0.9; }
+
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 25px; }
+    .stat-card { background: white; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.08); transition: transform 0.2s; }
+    .stat-card:hover { transform: translateY(-5px); }
+    .stat-card h3 { font-size: 2rem; color: #ff0000; margin: 10px 0; }
+    .stat-card p { color: #666; font-size: 0.95rem; }
+
+    .section { background: white; border-radius: 12px; padding: 20px; margin-bottom: 25px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .section h2 { color: #d32f2f; border-bottom: 2px solid #ffebee; padding-bottom: 10px; margin-bottom: 15px; font-size: 1.4rem; }
+    
+    .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    .chart-container { background: #fafafa; padding: 15px; border-radius: 8px; }
+    canvas { width: 100% !important; height: 300px !important; }
+
+    .table-container { overflow-x: auto; margin: 15px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th { background: #ffebee; color: #c62828; padding: 12px; text-align: left; }
+    td { padding: 10px 12px; border-bottom: 1px solid #eee; }
+    tr:hover { background: #fff5f5; }
+
+    .highlight { background: #fff3e0 !important; font-weight: 600; }
+    .positive { color: #2e7d32; }
+    .negative { color: #c62828; }
+
+    .conclusion { background: #e8f5e9; border-left: 5px solid #4caf50; padding: 15px; margin: 15px 0; border-radius: 0 8px 8px 0; }
+    .recommendation { background: #e3f2fd; border-left: 5px solid #1976d2; padding: 15px; margin: 15px 0; border-radius: 0 8px 8px 0; }
+
+    footer { text-align: center; padding: 20px; color: #666; font-size: 0.9rem; margin-top: 30px; border-top: 1px solid #eee; }
+
+    @media (max-width: 768px) {
+      .charts-grid { grid-template-columns: 1fr; }
+      header h1 { font-size: 1.8rem; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <header>
+    <div style="display: flex; text-align: center;">
+        <a href=""><img src="youtube.png" alt="" width="80px"></a>
+        <h1 style="position: relative; left: 180px;">Dashboard Predictivo YouTube 2025</h1>
+    </div>
+      
+      <p>Sistema Inteligente para Optimización de Viralidad en Videos Trending</p>
+    </header>
+
+    <!-- ESTADÍSTICAS CLAVE -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>2.1M</h3>
+        <p>Vistas Promedio</p>
+      </div>
+      <div class="stat-card">
+        <h3>85K</h3>
+        <p>Likes Promedio</p>
+      </div>
+      <div class="stat-card">
+        <h3>4.2K</h3>
+        <p>Comentarios Promedio</p>
+      </div>
+      <div class="stat-card">
+        <h3>18</h3>
+        <p>Días Promedio</p>
+      </div>
+    </div>
+
+    <!-- MODELOS PREDICTIVOS -->
+    <div class="section">
+      <h2>III. Modelos Predictivos (Regresión)</h2>
+      
+
+      <div>
+        <a href=""><img src="regresionlineal.png" alt=""></a>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <tr><th>Modelo</th><th>R²</th><th>RMSE</th><th>Cross-Validation</th></tr>
+          <tr><td>Regresión Lineal</td><td>0.538</td><td>1,143,380</td><td>0.531</td></tr>
+          <tr class="highlight"><td>Regresión Polinomial</td><td>0.593</td><td>1,072,998</td><td>0.582</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- IMPORTANCIA DE VARIABLES -->
+    <div class="section">
+      <h2>Importancia de Variables</h2>
+      <div class="table-container">
+        <table>
+          <tr><th>Variable</th><th>Coeficiente</th><th>Efecto por Unidad</th><th>Impacto Relativo</th></tr>
+          <tr class="highlight"><td>days_since_published</td><td class="positive">+208.83</td><td>+208 vistas/día</td><td>62%</td></tr>
+          <tr><td>like_count</td><td class="positive">+26.44</td><td>+26 vistas/like</td><td>32%</td></tr>
+          <tr><td>comment_count</td><td class="negative">-16.90</td><td>-17 vistas/comentario</td><td>6%</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- MODELOS NO SUPERVISADOS -->
+    <div class="section">
+      <h2>IV. Modelos No Supervisados</h2>
+        <div>
+            <a href=""><img src="kM.png" alt=""></a>
+        </div>
+        <div style="display: flex; right: 300px; position: relative;">
+            <a href=""><img src="PCA.png" alt=""></a>
+        </div>
+      </div>
+      <p><strong>K-Means:</strong> 3 clústeres identificados (Bajo, Medio, Alto impacto).</p>
+      <p><strong>PCA:</strong> 2 componentes explican >75% de la varianza.</p>
+    </div>
+
+    <!-- BIG DATA -->
+    <div class="section">
+      <h2>V. Procesamiento Big Data</h2>
+      <div class="table-container">
+        <table>
+          <tr><th>Herramienta</th><th>Tiempo</th><th>Observación</th></tr>
+          <tr><td>pandas</td><td>0.034s</td><td>Rápido en datasets pequeños</td></tr>
+          <tr><td>Dask</td><td>1.479s</td><td>Escalable a millones de filas</td></tr>
+        </table>
+      </div>
+      <div class="recommendation">
+        <strong>Dask:</strong> Simula cómputo distribuido. Ideal para >100K filas.
+      </div>
+    </div>
+
+    <!-- RESULTADOS -->
+    <div class="section">
+      <h2>VII. Resultados y Discusión</h2>
+      <div class="conclusion">
+        <strong>Conclusión clave:</strong> El <strong>tiempo es el predictor más fuerte</strong> (62%), superando al engagement directo. El modelo polinomial mejora la predicción en +5.5% R².
+      </div>
+      <div class="recommendation">
+        <strong>Propuesta:</strong> Incluir NLP en títulos y análisis de thumbnails con visión por computadora.
+      </div>
+    </div>
+
+    <!-- CONCLUSIONES -->
+    <div class="section">
+      <h2>VIII. Conclusiones</h2>
+      <ul style="margin: 15px 0; padding-left: 20px;">
+        <li>Framework ML ligero y reproducible (R² = 0.593).</li>
+        <li>El tiempo domina sobre likes/comentarios en videos trending 2025.</li>
+        <li>Escalable con Dask y exportable a apps móviles.</li>
+        <li>Base para dashboards en tiempo real con API de YouTube.</li>
+      </ul>
+      <div class="conclusion">
+        <strong>Aporte:</strong> Primer modelo que prioriza antigüedad sobre engagement inmediato.
+      </div>
+    </div>
+
+    <footer>
+      Dashboard creado con HTML, CSS y JavaScript | Fuente: YouTube Top Videos 2025 (Kaggle) | 2025
+    </footer>
+  </div>
+
+  <script>
+    // === REGRESIÓN COMPARACIÓN ===
+    const regCtx = document.getElementById('regressionChart').getContext('2d');
+    new Chart(regCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Regresión Lineal', 'Regresión Polinomial'],
+        datasets: [{
+          label: 'R²',
+          data: [0.538, 0.593],
+          backgroundColor: ['#ff5252', '#4caf50']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { title: { display: true, text: 'Comparación de Modelos (R²)' } },
+        scales: { y: { beginAtZero: true, max: 1 } }
+      }
+    });
+
+    // === IMPORTANCIA DE VARIABLES ===
+    const coefCtx = document.getElementById('coefChart').getContext('2d');
+    new Chart(coefCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Días', 'Likes', 'Comentarios'],
+        datasets: [{
+          label: 'Impacto Relativo (%)',
+          data: [62, 32, 6],
+          backgroundColor: ['#ff9800', '#2196f3', '#f44336']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { title: { display: true, text: 'Impacto de Variables' } },
+        scales: { y: { beginAtZero: true, max: 100 } }
+      }
+    });
+
+    // === CLÚSTERES ===
+    const clusterCtx = document.getElementById('clusterChart').getContext('2d');
+    new Chart(clusterCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Bajo Impacto', 'Medio Impacto', 'Alto Impacto'],
+        datasets: [{
+          data: [45, 35, 20],
+          backgroundColor: ['#ff5252', '#448aff', '#4caf50']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { title: { display: true, text: 'Distribución por Clúster' } }
+      }
+    });
+
+    // === PCA ===
+    const pcaCtx = document.getElementById('pcaChart').getContext('2d');
+    new Chart(pcaCtx, {
+      type: 'scatter',
+      data: {
+        datasets: [{
+          label: 'Videos (PCA)',
+          data: [
+            {x: -2, y: -1.5, r: 15}, {x: -1, y: -1, r: 10}, {x: 0, y: 0, r: 8},
+            {x: 1.5, y: 2, r: 20}, {x: 2.5, y: 2.5, r: 25}, {x: 3, y: 3, r: 30}
+          ],
+          backgroundColor: 'rgba(255, 0, 0, 0.6)'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { title: { display: true, text: 'PCA: Reducción a 2D' } },
+        scales: {
+          x: { title: { display: true, text: 'Componente 1' } },
+          y: { title: { display: true, text: 'Componente 2' } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
